@@ -5,8 +5,9 @@ This repository contains a simple implementation of the Tic-Tac-Toe game.
 ## Clone the Repository
 
 To clone this repository, run the following command in your terminal:
-
-git clone https://github.com/Jscastro197/Tic-Tac-Toe.git
+ ```
+  git clone https://github.com/Jscastro197/Tic-Tac-Toe.git
+  ```
 
 
 ## Setting up the Development Environment
