@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     background: #eee;
+    padding: auto;
   }
 
   button {
@@ -27,6 +28,10 @@
     cursor: pointer;
     background: green;
     color: white;
+  }
+
+  #message{
+    padding: auto;
   }
 
   .play-area {

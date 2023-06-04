@@ -39,7 +39,7 @@ To clone this repository, run the following command in your terminal:
 - Windows:
 
   ```
-  .venv\Scripts\activate
+  . .venv/Scripts/activate
   ```
 
 - macOS/Linux:
