@@ -13,7 +13,10 @@ git clone https://github.com/Jscastro197/Tic-Tac-Toe.git
 
 1. Change your working directory to the cloned repository:
 
-cd Tic-Tac-Toe
+
+ ```
+  cd Tic-Tac-Toe
+  ```
 
 
 2. Create a virtual environment using the following command:
@@ -46,7 +49,10 @@ cd Tic-Tac-Toe
 
 4. Install the required dependencies:
 
-pip install -r requirements.txt
+
+  ```
+  pip install -r requirements.txt
+  ```
 
 
 ## Running the Application
@@ -67,7 +73,10 @@ pip install -r requirements.txt
 
 2. Start the Flask application:
 
-flask --app main run --debug
+
+  ```
+  flask --app main run --debug
+  ```
 
 
 The application will be accessible at [http://localhost:5000](http://localhost:5000) in your browser.
@@ -77,5 +86,3 @@ The application will be accessible at [http://localhost:5000](http://localhost:5
 ## Additional Information
 
 - If you encounter any issues or want to contribute, please open an issue or submit a pull request on the [GitHub repository](https://github.com/Jscastro197/Tic-Tac-Toe).
-
-- This project uses the MIT License. See the [LICENSE](LICENSE) file for more details.
