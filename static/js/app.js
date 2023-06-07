@@ -102,14 +102,33 @@ function handleResultValidation() {
     }
 }
 //ChatGPT provided a solution to the setTimeout
-function handleComputerMove(){
+function handleComputerMove() {
     gameActive = false;
-    setTimeout(() => {
-        pickMove();
-        gameActive=true;
-        if(!checkWin()){
-            handlePlayerChange()
-        }
+    const data = {
+        gameState: gameState,
+        currentPlayer: currentPlayer
+    };    setTimeout(() => {
+        // Make an AJAX request to the server
+        fetch('/make-move', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const move = data.move;
+            gameState[move] = currentPlayer;
+            document.getElementById(move).innerHTML = currentPlayer;
+            gameActive = true;
+            if (!checkWin()) {
+                handlePlayerChange();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }, 1000); // 1000ms = 1 second
 }
 
@@ -136,6 +155,7 @@ function handleCellClick(clickedCellEvent) {
 
     handleCellPlayed(clickedCell, clickedCellIndex);
     handleResultValidation();
+    console.log(gameState)
 }
 
 function handleRestartGame() {

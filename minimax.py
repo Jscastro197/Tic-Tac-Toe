@@ -1,39 +1,32 @@
 import math
-import random
 
-
-class Player:
+class Computer:
     def __init__(self, letter):
         self.letter = letter
 
-    def get_move(self, game):
-        pass
+    def get_move(self, game_state):
+        """
+        Returns the best move for the computer using the minimax algorithm.
+        game_state: Current state of the game as a list.
+        """
+        best_move = self.minimax(game_state, self.letter)
+        return best_move['position']
 
-
-class Computer(Player):
-    def __init__(self, letter):
-        super().__init__(letter)
-
-    def get_move(self, game):
-        if len(game.available_moves()) == 9:
-            return random.choice(game.available_moves())
-        return self.minimax(game, self.letter)['position']
-
-    def minimax(self, state, player):
+    def minimax(self, game_state, player):
         max_player = self.letter
         other_player = 'O' if player == 'X' else 'X'
 
-        if state.current_winner == other_player:
+        if self.is_winner(game_state, other_player):
             return {'position': None,
-                    'score': (state.num_empty_squares() + 1) * (-1 if other_player == max_player else 1)}
-        elif not state.empty_squares():
+                    'score': (self.num_empty_squares(game_state) + 1) * (-1 if other_player == max_player else 1)}
+        elif not self.num_empty_squares(game_state):
             return {'position': None, 'score': 0}
 
         best = {'position': None, 'score': -math.inf if player == max_player else math.inf}
-        for possible_move in state.available_moves():
-            state.make_move(possible_move, player)
-            sim_score = self.minimax(state, other_player)
-            state.undo_move(possible_move)
+        for possible_move in self.available_moves(game_state):
+            game_state[possible_move] = player
+            sim_score = self.minimax(game_state, other_player)
+            game_state[possible_move] = ''  # Undo the move
 
             sim_score['position'] = possible_move
 
@@ -43,21 +36,25 @@ class Computer(Player):
 
         return best
 
+    def is_winner(self, game_state, player):
+        winning_conditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
 
-class HumanPlayer(Player):
-    def __init__(self, letter):
-        super().__init__(letter)
+        for condition in winning_conditions:
+            if game_state[condition[0]] == game_state[condition[1]] == game_state[condition[2]] == player:
+                return True
+        return False
 
-    def get_move(self, game):
-        valid_square = False
-        val = None
-        while not valid_square:
-            square = input('')  # front end code
-            try:
-                val = int(square)
-                if val not in game.available_moves():
-                    raise ValueError
-                valid_square = True
-            except ValueError:
-                print('Invalid square. Try again.')
-        return val
+    def num_empty_squares(self, game_state):
+        return game_state.count('')
+
+    def available_moves(self, game_state):
+        return [i for i in range(len(game_state)) if game_state[i] == '']

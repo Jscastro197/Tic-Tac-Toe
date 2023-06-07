@@ -1,17 +1,21 @@
-from flask import Flask, render_template
-from minimax import Computer, HumanPlayer
+from flask import Flask, render_template, request, jsonify
+from minimax import Computer
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def hello():
-    return render_template ('index.html')
+    return render_template('index.html')
 
+@app.route('/make-move', methods=['POST'])
+def make_move():
+    data = request.json
+    game_state = data['gameState']
+    current_player = data['currentPlayer']
+    
+    computer = Computer(current_player)
+    move = computer.get_move(game_state)
+    return jsonify({'move': move})
 
 if __name__ == "__main__":
-    x_player = Computer('X')
-    o_player = HumanPlayer('O')
     app.run(port=8000, debug=True)
-
-
