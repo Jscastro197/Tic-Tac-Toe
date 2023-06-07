@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from minimax import minimax, computer, human
+from minimax import Computer, HumanPlayer
 
 app = Flask(__name__)
 
@@ -10,8 +10,8 @@ def hello():
 
 
 if __name__ == "__main__":
-    x_player = computer('X')
-    o_player = human('O')
+    x_player = Computer('X')
+    o_player = HumanPlayer('O')
     app.run(port=8000, debug=True)
 
 

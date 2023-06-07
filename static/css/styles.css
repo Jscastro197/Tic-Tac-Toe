@@ -1,86 +1,126 @@
-* {
+html,
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .container {
-    min-height: 100vh;
+}
+
+body {
+    color: rgb(65, 65, 65);
+    background-color: rgb(255, 255, 255);
+    font-family: Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #eee;
-    padding: auto;
-  }
+    place-items: center;
+    user-select: none;
+}
 
-  button {
-    outline: none;
-    border: 4px solid green;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    background: none;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  button:hover {
-    cursor: pointer;
-    background: green;
-    color: white;
-  }
-
-  #message{
-    padding: auto;
-  }
-
-  .play-area {
+.header {
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-top: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+.oscore {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+.xscore {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+.draws {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+.gameboard {
     display: grid;
-    width: 300px;
-    height: 300px;
-    grid-template-columns: auto auto auto;
-  }
-  .block {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    border: 3px solid black;
-    transition: background 0.2s ease-in-out;
-  }
-  
-  .block:hover {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 3rem 0 1rem 0;
+}
+
+.cell {
+    width: 6rem;
+    height: 6rem;
+    border: 6px solid rgb(65, 65, 65);
+    margin: -6px 0 0 -6px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 6rem;
+    font-size: 6rem;
     cursor: pointer;
-    background: #2b342b;
-  }
-
-  .occupied:hover {
-    background: #ff3a3a;
-  }
-
-  #block_0,
-#block_1,
-#block_2 {
-  border-top: none;
+    
 }
 
-#block_0,
-#block_3,
-#block_6 {
-  border-left: none;
+a {
+    text-decoration: underline;
+    color: black;
 }
 
-#block_6,
-#block_7,
-#block_8 {
-  border-bottom: none;
+a:visited {
+    color: black;
 }
 
-#block_2,
-#block_5,
-#block_8 {
-  border-right: none;
+/*************************************/
+/******        Game Status       *****/
+/*************************************/
+.status {
+    color: rgb(65, 65, 65);
+    /* color: orangered; */
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/*************************************/
+/******       Reload Button      *****/
+/*************************************/
+.restart {
+    color: rgb(65, 65, 65);
+    background-color: rgb(231, 231, 231);
+    font-size: 1.2rem;
+    font-weight: 600;
+    order: 1;
+    margin: 2rem;
+    padding: 0.8rem;
+    border: 0;
+    border-radius: 40px;
+    width: 8rem;
+    cursor: pointer;
+}
+
+.restart:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(185, 185, 185);
+    box-shadow: 0 5px 15px rgba(167, 167, 167, 0.4);
+
+}
+
+/*************************************/
+/******         Footer           *****/
+/*************************************/
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+  
+footer > p {
+    margin: 1.6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+  
+a,
+a:visited {
+    color: black;
+}
+  
+#heart {
+    font-size: 1.6rem;
 }
