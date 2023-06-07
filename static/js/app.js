@@ -119,6 +119,7 @@ function handleComputerMove() {
         .then(response => response.json())
         .then(data => {
             const move = data.move;
+            console.log("move ="+ move);
             gameState[move] = currentPlayer;
             document.getElementById(move).innerHTML = currentPlayer;
             gameActive = true;
@@ -130,6 +131,7 @@ function handleComputerMove() {
             console.error('Error:', error);
         });
     }, 1000); // 1000ms = 1 second
+    console.log(gameState)
 }
 
 function pickMove(){//this function loops through random numbers and uses that as an index. If index is empty play move
@@ -155,7 +157,6 @@ function handleCellClick(clickedCellEvent) {
 
     handleCellPlayed(clickedCell, clickedCellIndex);
     handleResultValidation();
-    console.log(gameState)
 }
 
 function handleRestartGame() {
