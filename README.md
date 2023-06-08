@@ -81,7 +81,7 @@ To clone this repository, run the following command in your terminal:
   ```
 
 
-The application will be accessible at [http://localhost:5000](http://localhost:8000) in your browser.
+The application will be accessible at [http://localhost:8000](http://localhost:8000) in your browser.
 
 3. Play the Tic-Tac-Toe game by following the on-screen instructions.
 
