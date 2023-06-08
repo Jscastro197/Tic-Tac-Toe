@@ -24,9 +24,9 @@ class Computer:
 
         best = {'position': None, 'score': -math.inf if player == max_player else math.inf} # Set the best score to -infinity if the current player is the computer, otherwise set it to infinity
         for possible_move in self.available_moves(game_state): # Loop through all the available moves
-            game_state[possible_move] = player # Make the move
-            sim_score = self.minimax(game_state, other_player) # Get the score of the move
-            game_state[possible_move] = '' # Undo the move
+            game_state[possible_move] = player # Make the move (place the letter on the board)
+            sim_score = self.minimax(game_state, other_player) # Get the score of the move (recursive call)
+            game_state[possible_move] = '' # Undo the move (backtrack)
 
             sim_score['position'] = possible_move # Set the position of the move
 
