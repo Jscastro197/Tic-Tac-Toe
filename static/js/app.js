@@ -38,12 +38,12 @@ function handleCellPlayed(clickedCell, clickedCellIndex) { //handles the updatin
     clickedCell.innerHTML = currentPlayer;
 }
 
-function handlePlayerChange() {
+function handlePlayerChange() { //handles the changing of players
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
 }
 
-function checkWin(){
+function checkWin(){ //checks to see if there is a winner
     let roundWon = false;
     for (let i = 0; i <= 7; i++) {
         const winCondition = winningConditions[i];
@@ -66,7 +66,7 @@ function checkWin(){
         }
     }
 
-    if (roundWon) {
+    if (roundWon) { //if there is a winner, display message and update score
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
@@ -81,7 +81,7 @@ function checkWin(){
         return roundWon;
     }
 
-    let roundDraw = !gameState.includes("");
+    let roundDraw = !gameState.includes(""); //checks to see if there is a draw
     if (roundDraw) { 
         statusDisplay.innerHTML = drawMessage();    
         gameActive = false;
@@ -94,7 +94,7 @@ function checkWin(){
 
 }
 
-function handleResultValidation() {
+function handleResultValidation() { //checks to see if there is a winner or draw
     checkWin();
     if(gameActive){
         handlePlayerChange();
@@ -102,7 +102,7 @@ function handleResultValidation() {
     }
 }
 //ChatGPT provided a solution to the setTimeout
-function handleComputerMove() {
+function handleComputerMove() { //handles the computer move
     gameActive = false;
     const data = {
         gameState: gameState,
@@ -117,7 +117,7 @@ function handleComputerMove() {
             body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(data => {
+        .then(data => { 
             const move = data.move;
             console.log("move ="+ move);
             gameState[move] = currentPlayer;

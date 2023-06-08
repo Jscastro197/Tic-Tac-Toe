@@ -3,11 +3,11 @@ from minimax import Computer
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/') # Home page
 def hello():
     return render_template('index.html')
 
-@app.route('/make-move', methods=['POST'])
+@app.route('/make-move', methods=['POST']) # Make a move
 def make_move():
     data = request.json
     game_state = data['gameState']
