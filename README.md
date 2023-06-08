@@ -1,5 +1,5 @@
 # Tic-Tac-Toe Game
-![](../static/proof.gif)
+![](static/proof.gif)
 This repository contains a simple implementation of the Tic-Tac-Toe game.
 
 ## Clone the Repository
